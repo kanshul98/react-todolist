@@ -119,3 +119,8 @@ p {
     font-size: 1em;
   }
 }
+
+i {
+  transform: scale(2);
+  padding-right: 15px;
+}
