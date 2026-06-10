@@ -8,7 +8,14 @@ export default function TodoInput(props){
         <header>
             <input  value={todoValue} 
                     onChange={(e) => {setTodoValue(e.target.value)}} 
-                    placeholder="enter to do..." />
+                    onKeyDown={(e) => {
+                        if(e.key === 'Enter' && todoValue !== ''){
+                            handleAddTodos(todoValue)
+                            setTodoValue('')
+                            }
+                        } 
+                    }
+                    placeholder="enter to do..." /> {/* onKeyDown will basically take the input if the user hits Enter after writing the todolist */}
                     
             <button onClick={() => {
                 handleAddTodos(todoValue)
