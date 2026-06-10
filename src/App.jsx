@@ -12,7 +12,7 @@ function App() {
   }
     
   function handleAddTodos(newTodoItem){
-    const newTodoList = [...todos, newTodoItem]
+    const newTodoList = [...todos, { text: newTodoItem, checked: false }]
     persistData(newTodoList)
     setTodos(newTodoList);
   }
@@ -21,6 +21,18 @@ function App() {
     const newTodoList = todos.filter((todo, toDoIndex) => {
       return toDoIndex !== index
     }) // return when the selected to-do item's index is NOT equal to the index recieved
+    persistData(newTodoList)
+    setTodos(newTodoList)
+  }
+
+  function handleCheckDeleteTodos(index){
+    const toggledTodoList = todos.map((todo, toDoIndex) => {
+      if(toDoIndex === index) {
+        return {...todo, checked: !todo.checked}
+      }
+      return todo
+    })
+    const newTodoList = toggledTodoList.filter((todo, toDoIndex) => toDoIndex !== index)
     persistData(newTodoList)
     setTodos(newTodoList)
   }
@@ -59,6 +71,7 @@ function App() {
                    
         <TodoList handleDeleteTodos={handleDeleteTodos} 
                   handleEditTodos={handleEditTodos}
+                  handleCheckDeleteTodos={handleCheckDeleteTodos}
                   todos={todos}/>
       </>
   )

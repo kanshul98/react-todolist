@@ -121,6 +121,12 @@ p {
 }
 
 i {
-  transform: scale(2);
-  padding-right: 15px;
+  transform: scale(1.6);
+  padding-right: 8px;
+}
+
+.check-box{
+  width: 20px;
+  height: 30px;
+  cursor: pointer;
 }
