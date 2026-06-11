@@ -2,7 +2,7 @@ import React from "react"
 
 function TodoCard(props){
 
-    const {children, handleDeleteTodos, handleEditTodos, handleCheckDeleteTodos, index, checked = false} = props; // Delete function is prop drilled from App > TodoList > TodoCard
+    const {children, handleDeleteTodos, handleEditTodos, handleCheckTodos, index, checked = false} = props; // Delete function is prop drilled from App > TodoList > TodoCard
 
     return(
 
@@ -10,8 +10,10 @@ function TodoCard(props){
             <li className="todoItem">
                 <input className="check-box" type="checkbox"
                        checked={checked}
-                       onChange={() => {handleCheckDeleteTodos(index)}}/>
-                {children} {/* {children} is a special BUILT-IN prop */}
+                       onChange={() => {handleCheckTodos(index)}}/>
+
+                    <p style={{textDecoration: checked ? 'line-through' : 'none'}}>{children}</p>
+
                 <div className="actionsContainer"> {/* div container contains the two buttons inside list item */}
                     <button onClick={() => {
                         handleEditTodos(index)

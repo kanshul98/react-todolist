@@ -25,20 +25,19 @@ function App() {
     setTodos(newTodoList)
   }
 
-  function handleCheckDeleteTodos(index){
-    const toggledTodoList = todos.map((todo, toDoIndex) => {
+  function handleCheckTodos(index){
+    const checkedTodoList = todos.map((todo, toDoIndex) => {
       if(toDoIndex === index) {
         return {...todo, checked: !todo.checked}
       }
       return todo
     })
-    const newTodoList = toggledTodoList.filter((todo, toDoIndex) => toDoIndex !== index)
-    persistData(newTodoList)
-    setTodos(newTodoList)
+    persistData(checkedTodoList)
+    setTodos(checkedTodoList)
   }
 
   function handleEditTodos(index){
-    const valueToBeEdited = todos[index];
+    const valueToBeEdited = todos[index].text;
     setTodoValue(valueToBeEdited);
     handleDeleteTodos(index);
     // here, we are editing the todo item by copying it back to-
@@ -66,12 +65,12 @@ function App() {
   return (
       <>
         <TodoInput todoValue={todoValue} 
-                   setTodoValue={setTodoValue} 
+                   setTodoValue={setTodoValue}
                    handleAddTodos={handleAddTodos}/>
                    
         <TodoList handleDeleteTodos={handleDeleteTodos} 
                   handleEditTodos={handleEditTodos}
-                  handleCheckDeleteTodos={handleCheckDeleteTodos}
+                  handleCheckTodos={handleCheckTodos}
                   todos={todos}/>
       </>
   )

@@ -12,8 +12,8 @@ function TodoList(props){
         <ul className="main">
             {todos.map((todo, todoIndex) => {
                 return(
-                    <TodoCard {...props} key={todoIndex} index={todoIndex}>
-                        <p>{todo.text}</p> {/* this is going to be the children component in TodoCard */}
+                    <TodoCard {...props} key={todoIndex} index={todoIndex} checked={todo.checked}>
+                        {todo.text} {/* this is going to be the children component in TodoCard */}
                     </TodoCard> // We are {...props} prop drilling here + adding index as another prop
                 )
             })}
