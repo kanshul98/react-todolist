@@ -1,5 +1,7 @@
 import React from "react"
 
+// the function is responsible for rendering a single TodoCard-
+// it renders its text, checkbox, edit button, and delete button
 function TodoCard(props){
 
     const {children, handleDeleteTodos, handleEditTodos, handleCheckTodos, index, checked = false} = props; // Delete function is prop drilled from App > TodoList > TodoCard

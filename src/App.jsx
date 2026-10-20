@@ -12,15 +12,15 @@ function App() {
   }
     
   function handleAddTodos(newTodoItem){
-    const newTodoList = [...todos, { text: newTodoItem, checked: false }]
+    const newTodoList = [...todos, { text: newTodoItem, checked: false }] // add in todos a new OBJECT which 1) has text newTodoItem, and 2) has checked status as false
     persistData(newTodoList)
-    setTodos(newTodoList);
+    setTodos(newTodoList); // state change to impute new list into todo
   }
     
   function handleDeleteTodos(index){
     const newTodoList = todos.filter((todo, toDoIndex) => {
       return toDoIndex !== index
-    }) // return when the selected to-do item's index is NOT equal to the index recieved
+    }) // return true/false when the selected index is/is-not equal to the toDoIndex
     persistData(newTodoList)
     setTodos(newTodoList)
   }
@@ -28,7 +28,7 @@ function App() {
   function handleCheckTodos(index){
     const checkedTodoList = todos.map((todo, toDoIndex) => {
       if(toDoIndex === index) {
-        return {...todo, checked: !todo.checked}
+        return {...todo, checked: !todo.checked} // !todo.checked basically toggles the status checked/unchecked and vice-versa
       }
       return todo
     })
