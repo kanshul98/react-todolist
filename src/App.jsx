@@ -45,6 +45,22 @@ function App() {
     // that it was associated with in the todo list
   }
 
+  function shiftTodoUp(index){
+    const newArray = [...todos];
+    if(index > 0 && index < todos.length){
+      [newArray[index-1], newArray[index]] = [newArray[index], newArray[index-1]]
+    }
+    setTodos(newArray)
+  }
+
+  function shiftToDoDown(index){
+    const newArray = [...todos];
+    if(index >= 0 && index < todos.length-1){
+      [newArray[index+1], newArray[index]] = [newArray[index], newArray[index+1]]
+    }
+    setTodos(newArray)
+  }
+
   // we are using this function to ensure that each time we refresh the website we are not losing the To-Do list
   // STANDARD FORMAT: useEffect(() => {}, [])
   useEffect(() => {
@@ -71,7 +87,9 @@ function App() {
         <TodoList handleDeleteTodos={handleDeleteTodos} 
                   handleEditTodos={handleEditTodos}
                   handleCheckTodos={handleCheckTodos}
-                  todos={todos}/>
+                  todos={todos}
+                  shiftTodoUp={shiftTodoUp}
+                  shiftToDoDown={shiftToDoDown}/>
       </>
   )
 }
