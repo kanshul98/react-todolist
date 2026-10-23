@@ -38,7 +38,7 @@ function TodoCard(props){
                     <button onClick={() => {
                         handleDeleteTodos(index)
                     }}>
-                        <i className="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-delete-left"></i>
                     </button>
                     
                 </div>

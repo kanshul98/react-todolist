@@ -64,6 +64,15 @@ header input {
   background: white;
 }
 
+.trash-all {
+  margin-left: 10px;
+  padding: 14px 18px;
+  padding-left: 29px;
+  border: none;
+  outline: none;
+  background: white;
+}
+
 p {
   font-size: 0.9em;
 }

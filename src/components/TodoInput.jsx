@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function TodoInput(props){
 
-    const {handleAddTodos, todoValue, setTodoValue} = props; // destructuring out that component from the prop
+    const {handleAddTodos, handleWipeList, todoValue, setTodoValue} = props; // destructuring out that component from the prop
 
     return(
         <header>
@@ -20,7 +20,15 @@ export default function TodoInput(props){
             <button onClick={() => {
                 handleAddTodos(todoValue)
                 setTodoValue('') // once the value has been added, replace it with empty string
-            }}>Add</button>
+            }}>Add</button> {/* --- button to ADD the value to the todolist */}
+
+            <button className="trash-all" onClick={() => {
+                handleWipeList()
+            }}>
+                <i class="fa-solid fa-trash"></i>
+            </button> {/* --- button to DELETE AND WIPE OUT all the values to the todolist */}
+
+
         </header>
     )
 }

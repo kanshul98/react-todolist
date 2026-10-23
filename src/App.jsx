@@ -16,7 +16,11 @@ function App() {
     persistData(newTodoList)
     setTodos(newTodoList); // state change to impute new list into todo
   }
-   // 
+
+  function handleWipeList(){
+    setTodos([])
+  } // NEW CODE !!!!!!!!
+
   function handleDeleteTodos(index){
     const newTodoList = todos.filter((todo, toDoIndex) => {
       return toDoIndex !== index
@@ -90,7 +94,8 @@ function App() {
       <>
         <TodoInput todoValue={todoValue} 
                    setTodoValue={setTodoValue}
-                   handleAddTodos={handleAddTodos}/>
+                   handleAddTodos={handleAddTodos}
+                   handleWipeList={handleWipeList}/>
                    
         <TodoList handleDeleteTodos={handleDeleteTodos} 
                   handleEditTodos={handleEditTodos}
