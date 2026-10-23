@@ -12,7 +12,7 @@ function App() {
   }
     
   function handleAddTodos(newTodoItem){
-    const newTodoList = [...todos, { text: newTodoItem, checked: false }] // add in todos a new OBJECT which 1) has text newTodoItem, and 2) has checked status as false
+    const newTodoList = [{text: newTodoItem, checked: false}, ...todos] // add in todos a new OBJECT which 1) has text newTodoItem, and 2) has checked status as false
     persistData(newTodoList)
     setTodos(newTodoList); // state change to impute new list into todo
   }
@@ -26,12 +26,20 @@ function App() {
   }
 
   function handleCheckTodos(index){
+
     const checkedTodoList = todos.map((todo, toDoIndex) => {
       if(toDoIndex === index) {
         return {...todo, checked: !todo.checked} // !todo.checked basically toggles the status checked/unchecked and vice-versa
       }
       return todo
     })
+    
+    // this next section merely pushes the checked todo item to the bottom of the list
+    checkedTodoList.sort((a,b) => 
+      Number(a.checked) - Number(b.checked)
+    );
+
+    // then we just finally assign our updated list to setTodos
     persistData(checkedTodoList)
     setTodos(checkedTodoList)
   }
