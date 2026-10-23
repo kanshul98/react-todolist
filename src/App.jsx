@@ -16,7 +16,7 @@ function App() {
     persistData(newTodoList)
     setTodos(newTodoList); // state change to impute new list into todo
   }
-    
+   // 
   function handleDeleteTodos(index){
     const newTodoList = todos.filter((todo, toDoIndex) => {
       return toDoIndex !== index
